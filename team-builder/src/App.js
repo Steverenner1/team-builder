@@ -3,24 +3,23 @@ import logo from './logo.svg';
 import './App.css';
 import Forms from "./Components/Forms";
 import Notes from "./Components/Notes";
+import data from "./Components/data";
 
 function App() {
-  const [team, setTeam] = useState([])
+  const [members, setMembers] = useState(data)
 
-  const newTeam = newMember => {
-    setTeam([...team, newMember]);
+  const newTeam = person => {
+    setMembers([...members, person]);
   };
 
   return (
     <div className="App">
       <h1>Hello!</h1>
-      <Forms teamAdd={newTeam}/>
+      <Notes notes={members}/>
       <div>
-        {team.map((member, index) => (
-          <Notes key={index} newMember={member} />
-        ))}
+      <Forms newTeam={newTeam}/>
       </div>
-    
+      
     
     </div>
   );

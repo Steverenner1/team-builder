@@ -7,15 +7,17 @@ export default function Forms(props) {
     role: ""   
     });
     const handleChanges = event => {
-        const updateObj = {...user, [event.target.name]: event.target.value};
+        setUser({...user, [event.target.name]: event.target.value});
         console.log(user);
-        setUser(updateObj);
     };
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log("username", user);
-        props.teamAdd(user);
+        const newMember = {
+            ...user,
+        }
+        props.newTeam(newMember);
+        setUser({ name: "", email: "", role: ""})
     };
 
     return (

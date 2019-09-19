@@ -1,13 +1,23 @@
 import React from "react";
 import Forms from "./Forms";
 
-export default function Notes({ newMember }) {
-    
+const Notes = props => {
     return (
         <div className="team-members">
-            <h2>Name: {newMember.name}</h2>
-            <h2>Email: {newMember.email}</h2>
-            <h2>Role: {newMember.role}</h2>
+            {props.notes.map(member => {
+                return (
+            <div key = {member.id}>
+            
+            <p>Name: {member.name}</p>
+            <p>Email: {member.email}</p>
+            <p>Role: {member.role}</p>
+            <br></br>
+            </div>
+                )
+        })}
         </div>
     )
 }
+
+
+export default Notes;
